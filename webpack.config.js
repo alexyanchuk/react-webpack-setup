@@ -1,40 +1,27 @@
-const path = require('path')
-const webpack = require('webpack')
-
 module.exports = {
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  context: __dirname,
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    open: true,
-    clientLogLevel: 'silent',
-    port: 3000,
-    hot: true
+      path: __dirname + "/dist", 
+      filename: "bundle.js",
   },
   module: {
-    rules: [
+      rules: [
       {
-        test: /\.(jsx|js)$/,
-        include: path.resolve(__dirname, 'src'),
-        exclude: /node_modules/,
-        use: [{
+          test: /\.(jsx|js)$/,
+          exclude: /node_modules/,
+          use: [{
           loader: 'babel-loader',
           options: {
-            presets: [
+              presets: [
               ['@babel/preset-env', {
-                "targets": "defaults" 
+                  "targets": "defaults" 
               }],
               '@babel/preset-react'
-            ]
+              ],
           }
-        }]
+          }]
       }
-    ]
+      ]
   }
 }
