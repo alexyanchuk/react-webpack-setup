@@ -6,9 +6,9 @@
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint src/*.{js,jsx} -c .eslintrc.json --ext js,jsx",
-    "lint:fix": "eslint src/*.{js,jsx} --fix -c .eslintrc.json --ext js,jsx",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+    "lint": "eslint src/**/*.{js,jsx} -c .eslintrc.json --ext js,jsx",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix -c .eslintrc.json --ext js,jsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,md}\""
   },
   "keywords": [],
   "author": "",
