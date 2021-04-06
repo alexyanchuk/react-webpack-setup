@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": [
+      0,
+      {
+        "ignore": ["className", "children", "location", "params", "location*"]
+      }
+    ],
+    "quotes": ["error", "double"],
+    "semi": "error",
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "no-multiple-empty-lines": [2, { "max": 2 }]
+  }
+}

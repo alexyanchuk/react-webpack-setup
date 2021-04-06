@@ -1,0 +1,8 @@
+src/registerServiceWorker.js
+node_modules/*
+public/*
+build/*
+dist/*
+webpack.config.js
+webpack.prod.js
+webpack.dev.js

@@ -1,19 +1,17 @@
-const { merge } = require('webpack-merge');
-const config = require('./webpack.config.js');
-const webpack = require('webpack');
+const { merge } = require("webpack-merge");
+const webpack = require("webpack");
+const config = require("./webpack.config.js");
 
 module.exports = merge(config, {
     context: __dirname,
-    mode: 'development',
-    devtool: 'inline-source-map',
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
+    mode: "development",
+    devtool: "inline-source-map",
+    plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
-        contentBase: __dirname + "/dist",
+        contentBase: `${__dirname}/dist`,
         open: true,
-        clientLogLevel: 'silent',
+        clientLogLevel: "silent",
         port: 3000,
-        hot: true
+        hot: true,
     },
-})
+});
