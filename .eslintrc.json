@@ -24,8 +24,13 @@
         "ignore": ["className", "children", "location", "params", "location*"]
       }
     ],
+    "prettier/prettier": ["error", {}, {
+      "usePrettierrc": true
+    }],
+    "implicit-arrow-linebreak": 0,
     "quotes": ["error", "double"],
     "semi": "error",
+    "arrow-parens": 0,
     "indent": ["error", 4],
     "linebreak-style": ["error", "unix"],
     "no-multiple-empty-lines": [2, { "max": 2 }]
