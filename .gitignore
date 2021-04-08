@@ -11,9 +11,8 @@
 /coverage
 
 # production
-/build
-/dist/bundle.js
-/dist/bundle.js.LICENSE.txt
+/dist/*
+!/dist/index.html
 
 # misc
 .DS_Store
