@@ -4,9 +4,10 @@
     "es2021": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "airbnb"
+    "plugin:css-modules/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -15,8 +16,129 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "css-modules"],
   "rules": {
+    "array-callback-return": "error",
+    "dot-location": ["error", "property"],
+    "eqeqeq": ["error", "smart"],
+    "new-parens": "error",
+    "no-caller": "error",
+    "no-cond-assign": ["error", "except-parens"],
+    "no-const-assign": "error",
+    "no-control-regex": "error",
+    "no-delete-var": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty-character-class": "error",
+    "no-empty-pattern": "error",
+    "no-eval": "error",
+    "no-ex-assign": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-extra-label": "error",
+    "no-fallthrough": "error",
+    "no-func-assign": "error",
+    "no-implied-eval": "error",
+    "no-invalid-regexp": "error",
+    "no-iterator": "error",
+    "no-label-var": "error",
+    "no-labels": [
+        "error",
+        {
+            "allowLoop": true,
+            "allowSwitch": false
+        }
+    ],
+    "no-lone-blocks": "error",
+    "no-loop-func": "error",
+    "no-mixed-operators": [
+        "error",
+        {
+            "groups": [
+                ["&", "|", "^", "~", "<<", ">>", ">>>"],
+                ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+                ["&&", "||"],
+                ["in", "instanceof"]
+            ],
+            "allowSamePrecedence": false
+        }
+    ],
+    "no-multi-str": "error",
+    "no-native-reassign": "error",
+    "no-negated-in-lhs": "error",
+    "no-new-func": "error",
+    "no-new-object": "error",
+    "no-new-symbol": "error",
+    "no-new-wrappers": "error",
+    "no-obj-calls": "error",
+    "no-octal": "error",
+    "no-octal-escape": "error",
+    "no-redeclare": "error",
+    "no-regex-spaces": "error",
+    "no-restricted-syntax": ["error", "WithStatement"],
+    "no-script-url": "error",
+    "no-self-assign": "error",
+    "no-self-compare": "error",
+    "no-sequences": "error",
+    "no-shadow-restricted-names": "error",
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "error",
+    "no-this-before-super": "error",
+    "no-throw-literal": "error",
+    "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
+    "no-unused-expressions": [
+        "error",
+        {
+            "allowShortCircuit": true,
+            "allowTernary": true,
+            "allowTaggedTemplates": true
+        }
+    ],
+    "no-unused-labels": "error",
+    "no-useless-computed-key": "error",
+    "no-useless-concat": "error",
+    "no-useless-escape": "error",
+    "no-useless-rename": [
+        "error",
+        {
+            "ignoreDestructuring": false,
+            "ignoreImport": false,
+            "ignoreExport": false
+        }
+    ],
+    "no-with": "error",
+    "no-whitespace-before-property": "error",
+    "require-yield": "error",
+    "rest-spread-spacing": ["error", "never"],
+    "strict": ["error", "never"],
+    "unicode-bom": ["error", "never"],
+    "use-isnan": "error",
+    "valid-typeof": "error",
+    "getter-return": "error",
+    "react/forbid-foreign-prop-types": [
+        "error",
+        {
+            "allowInPropTypes": true
+        }
+    ],
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-pascal-case": [
+        "error",
+        {
+            "allowAllCaps": true,
+            "ignore": []
+        }
+    ],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-is-mounted": "error",
+    "react/style-prop-object": "error",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": [
       0,
@@ -24,15 +146,53 @@
         "ignore": ["className", "children", "location", "params", "location*"]
       }
     ],
-    "prettier/prettier": ["error", {}, {
-      "usePrettierrc": true
-    }],
+    "prettier/prettier": [
+      "error", 
+      {
+        "endOfLine": "auto"
+      }, 
+      {
+        "usePrettierrc": true
+      }
+    ],
     "implicit-arrow-linebreak": 0,
     "quotes": ["error", "double"],
     "semi": "error",
+    "arrow-body-style": [0, "always"],
+    "no-unsafe-optional-chaining": 0,
     "arrow-parens": 0,
+    "no-param-reassign": 0,
     "indent": ["error", 4],
-    "linebreak-style": ["error", "unix"],
-    "no-multiple-empty-lines": [2, { "max": 2 }]
+    "linebreak-style": 0,
+    "no-multiple-empty-lines": [2, { "max": 2 }],
+    "css-modules/no-unused-class": [2, { "camelCase": true }],
+    "css-modules/no-undef-class": [2, { "camelCase": true }]
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass", // Regex for Component Factory to use,
+                                          // default to "createReactClass"
+      "pragma": "React",  // Pragma to use, default to "React"
+      "fragment": "Fragment",  // Fragment to use (may be a property of <pragma>), default to "Fragment"
+      "version": "detect", // React version. "detect" automatically picks the version you have installed.
+                            // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+                            // default to latest and warns if missing
+                            // It will default to "detect" in the future
+      "flowVersion": "0.53" // Flow version
+    },
+    "propWrapperFunctions": [
+        // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+        "forbidExtraProps",
+        {"property": "freeze", "object": "Object"},
+        {"property": "myFavoriteWrapper"}
+    ],
+    "linkComponents": [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
+    ],
+    "css-modules": {
+      "basePath": "./src/"
+    }
   }
 }

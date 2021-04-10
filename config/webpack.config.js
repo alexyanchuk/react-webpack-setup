@@ -1,9 +1,12 @@
+const path = require("path");
+const paths = require("./paths");
+
 module.exports = {
-    context: __dirname,
-    entry: "../src/index.js",
+    context: path.resolve(paths.appSrc),
+    entry: [paths.appIndexJs],
     output: {
-        path: `${__dirname}/../dist`,
-        publicPath: '/',
+        path: path.resolve(paths.appDist),
+        publicPath: "/",
         filename: "bundle.js",
     },
     module: {
@@ -11,6 +14,7 @@ module.exports = {
             {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
+                include: path.resolve(paths.appSrc),
                 use: [
                     {
                         loader: "babel-loader",
@@ -30,6 +34,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
+                include: path.resolve(paths.appSrc),
                 use: [
                     {
                         loader: 'file-loader',
