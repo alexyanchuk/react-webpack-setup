@@ -2,6 +2,9 @@ const { merge } = require("webpack-merge");
 const config = require("./webpack.config.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const path = require("path");
+const paths = require("./paths");
+
 module.exports = merge(config, {
     mode: "production",
     plugins: [
@@ -15,6 +18,7 @@ module.exports = merge(config, {
             {
                 test: /\.module\.s(a|c)ss$/,
                 exclude: /node_modules/,
+                include: path.resolve(paths.appSrc),
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
@@ -29,6 +33,7 @@ module.exports = merge(config, {
             {
                 test: /\.s(a|c)ss$/,
                 exclude: [/\.module.(s(a|c)ss)$/, /node_modules/],
+                include: path.resolve(paths.appSrc),
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
